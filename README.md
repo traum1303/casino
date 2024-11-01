@@ -40,6 +40,12 @@ docker exec casino-workspace-1 bash -c "cd casino.local && chmod 777 ./storage -
 docker exec -it casino-workspace-1 bash -c "cd casino.local && npm install && npm run build"
 ```
 
+#### Run queue and web-socket serv in 2 sepatate terminals
+```bash
+docker exec casino-workspace-1 bash -c "cd casino.local && php artisan queue:work rabbitmq"
+docker exec casino-workspace-1 bash -c "cd casino.local && php artisan reverb:install &&  php artisan reverb:start"
+```
+
 #### How to stop containers
 ```bash
 docker-compose -f laradock/docker-compose-dev.yml stop
